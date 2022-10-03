@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -8,10 +9,10 @@
     android:orientation="horizontal">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/image"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
+        android:id="@+id/ivImageAlbum"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="15dp"
         android:background="@color/black" />
 
     <LinearLayout
@@ -22,20 +23,29 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvTitle"
+            android:id="@+id/tvTitleAlbum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Something"
+            tools:text="Title"
             android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvSubTitle"
+            android:id="@+id/tvArtistAlbum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="The beatles"
+            tools:text="Artist"
             android:textColor="@color/white" />
 
+
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/ibtnMore"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#262830"
+        android:scaleType="fitEnd"
+        app:srcCompat="@drawable/more" />
 
 
 </LinearLayout>

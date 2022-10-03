@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:backgroundTint="#262830">
+    android:background="#262830">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -13,10 +13,12 @@
         style="@style/Widget.MaterialComponents.BottomNavigationView.Colored">
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/mtText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#262830"
-            app:title="Music" />
+            android:background="#262830"
+            app:title="Music"
+            app:titleTextColor="@color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -24,6 +26,7 @@
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="619dp"
+        android:background="#262830"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -31,8 +34,9 @@
         style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/bottom_navigtion_menu"
-        android:layout_gravity="bottom" />
+        app:menu="@menu/bottom_navigation_menu"
+        android:layout_gravity="bottom"
+        android:background="#262830" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
