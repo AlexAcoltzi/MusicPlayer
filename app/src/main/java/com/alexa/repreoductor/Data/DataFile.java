@@ -3,6 +3,7 @@ package com.alexa.repreoductor.Data;
 import android.net.Uri;
 
 import com.alexa.repreoductor.List.ListAlbums;
+import com.alexa.repreoductor.List.ListPlaylist;
 import com.alexa.repreoductor.List.ListSong;
 
 import java.util.ArrayList;
@@ -23,6 +24,14 @@ public class DataFile {
 
         for (int i = 0; i < 5; i++) {
             list.add(new ListAlbums(Uri.EMPTY, "Album " + i, "Artist " + i));
+        }
+        return list;
+    }
+
+    public List<ListPlaylist> PlayList() {
+        List<ListPlaylist> list = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            list.add(new ListPlaylist(Uri.EMPTY, "PlayList " + i));
         }
         return list;
     }
