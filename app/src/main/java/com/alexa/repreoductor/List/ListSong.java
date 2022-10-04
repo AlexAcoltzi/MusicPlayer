@@ -1,13 +1,13 @@
-package com.alexa.repreoductor;
+package com.alexa.repreoductor.List;
 
 import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ListElement {
+public class ListSong {
 
-    public ListElement(Uri img, String tvTitle, String tvSubTitle) {
+    public ListSong(Uri img, String tvTitle, String tvSubTitle) {
         this.ivPortada = ivPortada;
         this.tvTitle = tvTitle;
         this.tvSubTitle = tvSubTitle;

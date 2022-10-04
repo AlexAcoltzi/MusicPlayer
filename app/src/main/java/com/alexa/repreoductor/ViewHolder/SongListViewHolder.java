@@ -1,4 +1,4 @@
-package com.alexa.repreoductor;
+package com.alexa.repreoductor.ViewHolder;
 
 import android.net.Uri;
 import android.view.View;
@@ -7,7 +7,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+import com.alexa.repreoductor.List.ListSong;
+import com.alexa.repreoductor.R;
 
 public class SongListViewHolder extends RecyclerView.ViewHolder {
 
@@ -22,10 +23,14 @@ public class SongListViewHolder extends RecyclerView.ViewHolder {
         tvSubTitle = view.findViewById(R.id.tvSubTitle);
     }
 
-    void render(final ListElement item){
+    public void render(final ListSong item) {
+        if (item.getIvPortada() != Uri.EMPTY) {
+            ivFoto.setImageURI(item.getIvPortada());
+        } else {
+            ivFoto.setImageResource(R.drawable.sound_waves);
+        }
         tvTitle.setText(item.getTvTitle());
         tvSubTitle.setText(item.getTvSubTitle());
-        ivFoto.setImageURI(item.getIvPortada());
     }
 
 }

@@ -1,17 +1,19 @@
-package com.alexa.repreoductor;
+package com.alexa.repreoductor.Adapters;
 
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.alexa.repreoductor.Fragments.HomeFragment;
+import com.alexa.repreoductor.Fragments.AlbumFragment;
+import com.alexa.repreoductor.Fragments.PlayListsFragment;
+
 public class AdapterFragment extends FragmentStateAdapter {
 
 
-    public AdapterFragment(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+    public AdapterFragment(FragmentManager fragmentManager, Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
     }
 
@@ -23,7 +25,7 @@ public class AdapterFragment extends FragmentStateAdapter {
             case 1:
                 return new PlayListsFragment();
             default:
-                return new LibaryFragment();
+                return new AlbumFragment();
         }
     }
 
