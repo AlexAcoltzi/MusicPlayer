@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.alexa.repreoductor.Adapters.AdapterFragment;
 import com.alexa.repreoductor.Adapters.PlaylistAdapter;
+import com.alexa.repreoductor.Data.DataFile;
 import com.alexa.repreoductor.Fragments.PlayListsFragment;
 import com.alexa.repreoductor.List.Playlist;
 import com.alexa.repreoductor.ViewHolder.PlaylistViewHolder;
@@ -74,18 +75,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        //Accedemos con permisos a los archivos del telefono
-        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)!=
-                PackageManager.PERMISSION_GRANTED){
-            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,Manifest.permission.READ_EXTERNAL_STORAGE)){
-                ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},MY_PERMISSION_REQUEST);
-
-            }else{
-                ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},MY_PERMISSION_REQUEST);
-            }
-        }else{
-            doStuff();
-        }
 
         navigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
@@ -102,6 +91,18 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
+        /*Accedemos con permisos a los archivos del telefono
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)!=
+                PackageManager.PERMISSION_GRANTED){
+            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,Manifest.permission.READ_EXTERNAL_STORAGE)){
+                ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},MY_PERMISSION_REQUEST);
+
+            }else{
+                ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},MY_PERMISSION_REQUEST);
+            }
+        }else{
+            doStuff();
+        }
     }
     public  void doStuff(){
         //listView = (ListView) findViewById(R.id.)
@@ -139,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return;
             }
-        }
+        }*/
     }
+
 }

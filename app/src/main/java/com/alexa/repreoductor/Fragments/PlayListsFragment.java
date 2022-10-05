@@ -37,6 +37,13 @@ public class PlayListsFragment extends Fragment {
 
         PlaylistAdapter playlistAdapter = new PlaylistAdapter(list);
 
+        playlistAdapter.setOnItemClickListener(new PlaylistAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(int position) {
+                list.remove(position);
+                playlistAdapter.notifyItemRemoved(position);
+            }
+        });
 
         View view = inflater.inflate(R.layout.songs_list, container, false);
         recyclerView = view.findViewById(R.id.rvSong);
