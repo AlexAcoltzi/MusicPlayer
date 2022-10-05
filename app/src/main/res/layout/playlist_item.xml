@@ -25,7 +25,7 @@
         tools:text="Somthing" />
 
     <ImageButton
-        android:id="@+id/ibtnMore"
+        android:id="@+id/ibtnMorePlaylist"
         android:layout_width="54dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#262830"

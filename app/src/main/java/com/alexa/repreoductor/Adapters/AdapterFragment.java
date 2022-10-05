@@ -17,10 +17,13 @@ import java.util.List;
 public class AdapterFragment extends FragmentStateAdapter {
 
     List<ListPlaylist> arraySongs = null;
+
     public AdapterFragment(FragmentManager fragmentManager, Lifecycle lifecycle, List<ListPlaylist> arraySongs) {
         super(fragmentManager, lifecycle);
         this.arraySongs = arraySongs;
     }
+
+    //Función para crear el fragmento en la posición necesaria
 
     @Override
     public Fragment createFragment(int position) {
