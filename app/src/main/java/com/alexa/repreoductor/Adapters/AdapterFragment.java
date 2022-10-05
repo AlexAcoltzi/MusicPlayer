@@ -9,18 +9,21 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.alexa.repreoductor.Fragments.HomeFragment;
 import com.alexa.repreoductor.Fragments.AlbumFragment;
 import com.alexa.repreoductor.Fragments.PlayListsFragment;
-import com.alexa.repreoductor.List.ListPlaylist;
+import com.alexa.repreoductor.List.Playlist;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterFragment extends FragmentStateAdapter {
 
-    List<ListPlaylist> arraySongs = null;
-    public AdapterFragment(FragmentManager fragmentManager, Lifecycle lifecycle, List<ListPlaylist> arraySongs) {
+    List<Playlist> arraySongs = null;
+
+    public AdapterFragment(FragmentManager fragmentManager, Lifecycle lifecycle, List<Playlist> arraySongs) {
         super(fragmentManager, lifecycle);
         this.arraySongs = arraySongs;
     }
+
+    //Función para crear el fragmento en la posición necesaria
 
     @Override
     public Fragment createFragment(int position) {

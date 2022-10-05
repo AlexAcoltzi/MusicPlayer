@@ -1,34 +1,17 @@
 package com.alexa.repreoductor;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.PopupMenu;
-import androidx.appcompat.widget.Toolbar;
-import androidx.collection.ArraySet;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager2.widget.ViewPager2;
-
 import android.Manifest;
-import android.content.ContentResolver;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.view.MenuInflater;
-import android.view.View;
-import android.provider.MediaStore;
-import android.view.MenuItem;
-import android.view.Window;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.alexa.repreoductor.Adapters.AdapterFragment;
-import com.alexa.repreoductor.List.ListPlaylist;
+import com.alexa.repreoductor.List.Playlist;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -37,13 +20,6 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.io.File;
-import com.alexa.repreoductor.Adapters.PlaylistAdapter;
-import com.alexa.repreoductor.Fragments.PlayListsFragment;
-import com.alexa.repreoductor.List.Playlist;
-import com.alexa.repreoductor.ViewHolder.PlaylistViewHolder;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSION_REQUEST = 1;
     ArrayList<String> arrayList = null;
     ListView listView;
-    List<ListPlaylist> listPlaylist;
+    List<Playlist> listPlaylist;
     private String[] items;
 
     @Override
