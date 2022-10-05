@@ -1,7 +1,7 @@
 package com.alexa.repreoductor.Adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,19 +14,25 @@ import java.util.List;
 
 public class SongListAdapter extends RecyclerView.Adapter<SongListViewHolder> {
 
-    private final LayoutInflater liView;
     private final List<Song> mData; //---------
-    private final Context context;
+    private OnItemClicked onItemClicked;
 
-    public SongListAdapter(List<Song> mData, Context context) {
-        this.liView = LayoutInflater.from(context);
+    public interface OnItemClicked {
+        void OnItemClick(int position);
+    }
+
+    public void setOnItemClicked(OnItemClicked onItemClicked) {
+        this.onItemClicked = onItemClicked;
+    }
+
+    public SongListAdapter(List<Song> mData) {
         this.mData = mData;
-        this.context = context;
     }
 
     @Override
     public SongListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new SongListViewHolder(liView.inflate(R.layout.song_item, parent, false));
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.song_item, parent, false);
+        return new SongListViewHolder(view, onItemClicked);
     }
 
     @Override
