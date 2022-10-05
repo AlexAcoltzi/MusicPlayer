@@ -3,28 +3,26 @@ package com.alexa.repreoductor.Fragments;
 import android.content.Context;
 import android.os.Bundle;
 
-import androidx.appcompat.widget.Toolbar;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.alexa.repreoductor.Adapters.PlaylistAdapter;
 import com.alexa.repreoductor.Data.DataFile;
-import com.alexa.repreoductor.List.ListPlaylist;
-import com.alexa.repreoductor.List.ListSong;
-import com.alexa.repreoductor.MainActivity;
+import com.alexa.repreoductor.List.Playlist;
 import com.alexa.repreoductor.R;
-import com.alexa.repreoductor.Adapters.SongListAdapter;
 
 import java.util.List;
 
 public class PlayListsFragment extends Fragment {
     private RecyclerView recyclerView;
-    private List<ListPlaylist> list;
+    private List<Playlist> list;
     private Context context;
 
 
@@ -35,7 +33,9 @@ public class PlayListsFragment extends Fragment {
 
         DataFile dataFile = new DataFile();
         list = dataFile.PlayList();
-        PlaylistAdapter playlistAdapter = new PlaylistAdapter(list, getContext());
+
+
+        PlaylistAdapter playlistAdapter = new PlaylistAdapter(list);
 
 
         View view = inflater.inflate(R.layout.songs_list, container, false);

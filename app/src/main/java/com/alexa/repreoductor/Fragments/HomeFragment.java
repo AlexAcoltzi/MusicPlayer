@@ -3,7 +3,6 @@ package com.alexa.repreoductor.Fragments;
 import android.content.Context;
 import android.os.Bundle;
 
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,8 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.alexa.repreoductor.Data.DataFile;
-import com.alexa.repreoductor.List.ListSong;
-import com.alexa.repreoductor.MainActivity;
+import com.alexa.repreoductor.List.Song;
 import com.alexa.repreoductor.R;
 import com.alexa.repreoductor.Adapters.SongListAdapter;
 
@@ -23,7 +21,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     RecyclerView recyclerView;
-    private List<ListSong> mData;
+    private List<Song> mData;
     private Context context;
 
 

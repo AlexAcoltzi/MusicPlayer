@@ -1,17 +1,25 @@
 package com.alexa.repreoductor;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.Window;
+import android.view.View;
+import android.widget.Toast;
 
 
 import com.alexa.repreoductor.Adapters.AdapterFragment;
+import com.alexa.repreoductor.Adapters.PlaylistAdapter;
+import com.alexa.repreoductor.Fragments.PlayListsFragment;
+import com.alexa.repreoductor.List.Playlist;
+import com.alexa.repreoductor.ViewHolder.PlaylistViewHolder;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         ViewPager2 pager = findViewById(R.id.pager);
 
         Toolbar toolbar = findViewById(R.id.mtText);
+
 
         pager.setAdapter(new AdapterFragment(getSupportFragmentManager(), getLifecycle()));
 
@@ -49,24 +58,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.page_1:
-                        pager.setCurrentItem(0, false);
-                        return true;
-                    case R.id.page_2:
-                        pager.setCurrentItem(1, false);
-                        return true;
-                    case R.id.page_3:
-                        pager.setCurrentItem(2, false);
-                        return true;
-                }
-                return false;
+        navigationView.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.page_1:
+                    pager.setCurrentItem(0, false);
+                    return true;
+                case R.id.page_2:
+                    pager.setCurrentItem(1, false);
+                    return true;
+                case R.id.page_3:
+                    pager.setCurrentItem(2, false);
+                    return true;
             }
+            return false;
         });
 
     }
+
 
 }

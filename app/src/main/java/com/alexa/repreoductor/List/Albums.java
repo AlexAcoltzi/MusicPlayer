@@ -2,13 +2,13 @@ package com.alexa.repreoductor.List;
 
 import android.net.Uri;
 
-public class ListAlbums {
+public class Albums {
     private Uri img;
     private String title;
     private String artist;
 
 
-    public ListAlbums(Uri img, String title, String artist) {
+    public Albums(Uri img, String title, String artist) {
         this.img = img;
         this.title = title;
         this.artist = artist;
