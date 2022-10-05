@@ -14,6 +14,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.Window;
@@ -22,10 +23,19 @@ import android.widget.Toast;
 
 
 import com.alexa.repreoductor.Adapters.AdapterFragment;
+import com.alexa.repreoductor.List.ListPlaylist;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSION_REQUEST = 1;
     ArrayList<String> arrayList = null;
     ListView listView;
+    List<ListPlaylist> listPlaylist;
+    private String[] items;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +56,10 @@ public class MainActivity extends AppCompatActivity {
         ViewPager2 pager = findViewById(R.id.pager);
 
         Toolbar toolbar = findViewById(R.id.mtText);
+        //Accedemos con permisos a los archivos del telefono
+        runtimePermission();
 
-        pager.setAdapter(new AdapterFragment(getSupportFragmentManager(), getLifecycle()));
+        pager.setAdapter(new AdapterFragment(getSupportFragmentManager(), getLifecycle(), listPlaylist));
 
         pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -65,18 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        //Accedemos con permisos a los archivos del telefono
-        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)!=
-                PackageManager.PERMISSION_GRANTED){
-            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,Manifest.permission.READ_EXTERNAL_STORAGE)){
-                ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},MY_PERMISSION_REQUEST);
 
-            }else{
-                ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},MY_PERMISSION_REQUEST);
-            }
-        }else{
-            doStuff();
-        }
 
         navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -97,8 +101,29 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    public  void doStuff(){
-        //listView = (ListView) findViewById(R.id.)
+    public void runtimePermission(){
+        Dexter.withContext(this).withPermission(Manifest.permission.READ_EXTERNAL_STORAGE).withListener(
+                new PermissionListener() {
+                    @Override
+                    public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                        displaySong();
+                        //doStuff();
+                    }
+
+                    @Override
+                    public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                            permissionToken.continuePermissionRequest();
+                    }
+                }
+        ).check();
+    }
+    /*public  void doStuff(){
+        getMusic();
     }
     public void getMusic(){
         ContentResolver contentResolver = getContentResolver();
@@ -108,31 +133,42 @@ public class MainActivity extends AppCompatActivity {
             int songTitle = songCursor.getColumnIndex(MediaStore.Audio.Media.TITLE);
             int songArtist = songCursor.getColumnIndex(MediaStore.Audio.Media.ARTIST);
 
+
             do{
                 String currentTitle = songCursor.getString(songTitle);
                 String currentArtist = songCursor.getString(songArtist);
 
-                arrayList.add(currentTitle+'\n'+currentArtist);
+                //arrayList.add();
+                listPlaylist.add(new ListPlaylist(songUri,currentTitle+'\n'+currentArtist));
             }while (songCursor.moveToNext());
         }
-    }
+    }*/
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode,String[] permissions,int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case MY_PERMISSION_REQUEST: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                        Toast.makeText(this, "Permission granted!", Toast.LENGTH_SHORT).show();
-                        doStuff();
-                    }
-                } else {
-                    Toast.makeText(this, "No permission granted!", Toast.LENGTH_SHORT).show();
-                    finish();
+    public ArrayList<File> findSong(File file){
+        ArrayList<File> arrayList = new ArrayList<>();
+        File[] files = file.listFiles();
+        for (File singleFile: files){
+
+            if (singleFile.isDirectory() && !singleFile.isHidden()){
+                arrayList.addAll(findSong(singleFile));
+            }else{
+                if (singleFile.getName().endsWith(".mp3") || singleFile.getName().endsWith(".wav")){
+                    arrayList.add(singleFile);
                 }
-                return;
             }
         }
+        return arrayList;
     }
+
+    public void displaySong(){
+        final ArrayList<File> mySongs = findSong(Environment.getExternalStorageDirectory());
+        items = new String[mySongs.size()];
+        for (int i = 0; i<mySongs.size(); i++){
+            items[i]=mySongs.get(i).getName().toString().replace(".mp3","").replace(".wav","");
+
+        }
+
+    }
+
+
 }
