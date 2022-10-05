@@ -1,21 +1,18 @@
 package com.alexa.repreoductor.ViewHolder;
 
-import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.alexa.repreoductor.List.ListAlbums;
+import com.alexa.repreoductor.List.Albums;
 import com.alexa.repreoductor.R;
 
-import java.util.List;
-
 public class AlbumListViewHolder extends RecyclerView.ViewHolder {
-    private ImageView ivImage;
-    private TextView tvTitle;
-    private TextView tvArtist;
+    private final ImageView ivImage;
+    private final TextView tvTitle;
+    private final TextView tvArtist;
 
 
     public AlbumListViewHolder(View itemView) {
@@ -26,14 +23,9 @@ public class AlbumListViewHolder extends RecyclerView.ViewHolder {
         this.tvArtist = itemView.findViewById(R.id.tvArtistAlbum);
     }
 
-    public void render(final ListAlbums albums) {
+    public void render(final Albums albums) {
 
-
-        if (albums.getImg() != Uri.EMPTY) {
-            ivImage.setImageURI(albums.getImg());
-        } else {
-            ivImage.setImageResource(R.drawable.album);
-        }
+        ivImage.setImageResource(R.drawable.ic_album_icon);
         tvTitle.setText(albums.getTitle());
         tvArtist.setText(albums.getArtist());
     }

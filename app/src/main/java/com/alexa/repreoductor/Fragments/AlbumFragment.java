@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 
 
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,8 +14,7 @@ import android.view.ViewGroup;
 
 import com.alexa.repreoductor.Adapters.AlbumListAdapter;
 import com.alexa.repreoductor.Data.DataFile;
-import com.alexa.repreoductor.List.ListAlbums;
-import com.alexa.repreoductor.MainActivity;
+import com.alexa.repreoductor.List.Albums;
 import com.alexa.repreoductor.R;
 
 import java.util.List;
@@ -24,7 +22,7 @@ import java.util.List;
 public class AlbumFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private List<ListAlbums> mData;
+    private List<Albums> mData;
     private Context context;
 
     @Override

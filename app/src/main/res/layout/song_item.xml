@@ -8,11 +8,11 @@
     android:orientation="horizontal">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/image"
+        android:id="@+id/ivSongItem"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
-        android:background="@color/black" />
+        android:background="#262830" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -36,6 +36,14 @@
             android:textColor="@color/white" />
 
     </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivPlaySong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitEnd"
+        android:background="#262830"
+        android:src="@drawable/ic_polygon" />
 
 
 </LinearLayout>

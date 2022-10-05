@@ -6,18 +6,18 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.alexa.repreoductor.List.ListAlbums;
+import com.alexa.repreoductor.List.Albums;
 import com.alexa.repreoductor.R;
 import com.alexa.repreoductor.ViewHolder.AlbumListViewHolder;
 
 import java.util.List;
 
 public class AlbumListAdapter extends RecyclerView.Adapter<AlbumListViewHolder> {
-    private final List<ListAlbums> mData;
+    private final List<Albums> mData;
     private final LayoutInflater liView;
     private final Context context;
 
-    public AlbumListAdapter(List<ListAlbums> mData, Context context) {
+    public AlbumListAdapter(List<Albums> mData, Context context) {
         this.mData = mData;
         this.liView = LayoutInflater.from(context);
         this.context = context;
