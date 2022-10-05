@@ -6,12 +6,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.alexa.repreoductor.Fragments.HomeFragment;
 import com.alexa.repreoductor.Fragments.AlbumFragment;
+import com.alexa.repreoductor.Fragments.HomeFragment;
 import com.alexa.repreoductor.Fragments.PlayListsFragment;
 import com.alexa.repreoductor.List.Playlist;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterFragment extends FragmentStateAdapter {
@@ -41,4 +40,5 @@ public class AdapterFragment extends FragmentStateAdapter {
     public int getItemCount() {
         return 3;
     }
+
 }

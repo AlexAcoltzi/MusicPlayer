@@ -105,27 +105,6 @@ public class MainActivity extends AppCompatActivity {
                 }
         ).check();
     }
-    /*public  void doStuff(){
-        getMusic();
-    }
-    public void getMusic(){
-        ContentResolver contentResolver = getContentResolver();
-        Uri songUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-        Cursor songCursor = contentResolver.query(songUri,null,null,null,null);
-        if(songCursor != null && songCursor.moveToFirst()){
-            int songTitle = songCursor.getColumnIndex(MediaStore.Audio.Media.TITLE);
-            int songArtist = songCursor.getColumnIndex(MediaStore.Audio.Media.ARTIST);
-
-
-            do{
-                String currentTitle = songCursor.getString(songTitle);
-                String currentArtist = songCursor.getString(songArtist);
-
-                //arrayList.add();
-                listPlaylist.add(new ListPlaylist(songUri,currentTitle+'\n'+currentArtist));
-            }while (songCursor.moveToNext());
-        }
-    }*/
 
     public ArrayList<File> findSong(File file){
         ArrayList<File> arrayList = new ArrayList<>();

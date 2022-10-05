@@ -10,7 +10,6 @@ import com.alexa.repreoductor.ViewHolder.PlaylistViewHolder;
 
 import java.util.List;
 
-// Class to adapt PlayListView
 public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistViewHolder> {
 
     private OnItemClickListener listener;
