@@ -3,5 +3,7 @@
     <string name="home">Inicio</string>
     <string name="playlist">PlayList</string>
     <string name="library">Carpetas</string>
+    <string name="Eliminar">Eliminar</string>
+    <string name="Editar">Editar</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

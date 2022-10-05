@@ -5,17 +5,17 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ListSong {
+public class Song {
+    private Uri ivPortada;
+    private String tvTitle;
+    private String tvSubTitle;
 
-    public ListSong(Uri img, String tvTitle, String tvSubTitle) {
+
+    public Song(Uri img, String tvTitle, String tvSubTitle) {
         this.ivPortada = ivPortada;
         this.tvTitle = tvTitle;
         this.tvSubTitle = tvSubTitle;
     }
-
-    public Uri ivPortada;
-    public String tvTitle;
-    public String tvSubTitle;
 
     public Uri getIvPortada() {
         return ivPortada;

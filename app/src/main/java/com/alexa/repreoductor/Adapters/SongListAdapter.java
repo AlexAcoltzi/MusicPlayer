@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.alexa.repreoductor.List.ListSong;
+import com.alexa.repreoductor.List.Song;
 import com.alexa.repreoductor.R;
 import com.alexa.repreoductor.ViewHolder.SongListViewHolder;
 
@@ -15,10 +15,10 @@ import java.util.List;
 public class SongListAdapter extends RecyclerView.Adapter<SongListViewHolder> {
 
     private final LayoutInflater liView;
-    private final List<ListSong> mData;
+    private final List<Song> mData; //---------
     private final Context context;
 
-    public SongListAdapter(List<ListSong> mData, Context context) {
+    public SongListAdapter(List<Song> mData, Context context) {
         this.liView = LayoutInflater.from(context);
         this.mData = mData;
         this.context = context;

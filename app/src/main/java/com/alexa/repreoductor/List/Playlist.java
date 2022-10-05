@@ -2,12 +2,12 @@ package com.alexa.repreoductor.List;
 
 import android.net.Uri;
 
-public class ListPlaylist {
+public class Playlist {
 
     private Uri img;
     private String Name;
 
-    public ListPlaylist(Uri img, String name) {
+    public Playlist(Uri img, String name) {
         this.img = img;
         Name = name;
     }
