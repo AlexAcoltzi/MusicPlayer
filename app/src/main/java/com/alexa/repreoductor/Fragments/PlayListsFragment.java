@@ -2,16 +2,13 @@ package com.alexa.repreoductor.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.alexa.repreoductor.Adapters.PlaylistAdapter;
 import com.alexa.repreoductor.Data.DataFile;
@@ -26,14 +23,13 @@ public class PlayListsFragment extends Fragment {
     private List<Playlist> list;
     private Context context;
 
-    public PlayListsFragment(List<ListPlaylist> arraySongs) {
+    public PlayListsFragment(List<Playlist> arraySongs) {
         list = new ArrayList<>();
         convertirDatosCancion(arraySongs);
     }
 
-    public void convertirDatosCancion(List<ListPlaylist> arraySongs)
-    {
-        for (ListPlaylist song : arraySongs){
+    public void convertirDatosCancion(List<Playlist> arraySongs) {
+        for (Playlist song : arraySongs) {
             list.add(song);
         }
 
