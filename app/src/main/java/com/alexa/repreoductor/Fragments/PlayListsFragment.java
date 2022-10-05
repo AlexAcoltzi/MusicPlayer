@@ -18,6 +18,7 @@ import com.alexa.repreoductor.Data.DataFile;
 import com.alexa.repreoductor.List.Playlist;
 import com.alexa.repreoductor.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlayListsFragment extends Fragment {
@@ -25,6 +26,18 @@ public class PlayListsFragment extends Fragment {
     private List<Playlist> list;
     private Context context;
 
+    public PlayListsFragment(List<ListPlaylist> arraySongs) {
+        list = new ArrayList<>();
+        convertirDatosCancion(arraySongs);
+    }
+
+    public void convertirDatosCancion(List<ListPlaylist> arraySongs)
+    {
+        for (ListPlaylist song : arraySongs){
+            list.add(song);
+        }
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
