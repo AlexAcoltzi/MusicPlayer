@@ -16,6 +16,7 @@ public class Song {
         this.tvTitle = tvTitle;
         this.tvSubTitle = tvSubTitle;
     }
+    public Song(){}
 
     public Uri getIvPortada() {
         return ivPortada;

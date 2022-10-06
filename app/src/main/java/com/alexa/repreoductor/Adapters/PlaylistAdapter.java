@@ -1,6 +1,8 @@
 package com.alexa.repreoductor.Adapters;
 
+import android.Manifest;
 import android.content.Context;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,10 +18,21 @@ import com.alexa.repreoductor.List.Song;
 import com.alexa.repreoductor.MainActivity;
 import com.alexa.repreoductor.R;
 import com.alexa.repreoductor.ViewHolder.PlaylistViewHolder;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistViewHolder> {
+
+
+
 
     public final List<Playlist> mData;
 
@@ -30,6 +43,7 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistViewHolder> {
 
 
     public PlaylistViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.playlist_item, parent, false);
         return new PlaylistViewHolder(view).linkAdapter(this);
 
@@ -44,5 +58,7 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistViewHolder> {
     public int getItemCount() {
         return mData.size();
     }
+
+
 
 }
