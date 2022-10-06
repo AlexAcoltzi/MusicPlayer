@@ -17,6 +17,8 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistViewHolder> {
 
     public interface OnItemClickListener {
         void OnItemClick(int position);
+
+        void ClickItem(int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener clickListener) {

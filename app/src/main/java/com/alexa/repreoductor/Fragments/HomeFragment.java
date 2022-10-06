@@ -11,26 +11,26 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alexa.repreoductor.Adapters.SongListAdapter;
-import com.alexa.repreoductor.Data.DataFile;
 import com.alexa.repreoductor.List.Song;
 import com.alexa.repreoductor.R;
 import com.alexa.repreoductor.ReproductorActivity;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
     RecyclerView recyclerView;
-    private List<Song> mData;
+    private ArrayList<Song> mData;
+
+    public HomeFragment(ArrayList<Song> songs) {
+        this.mData = songs;
+    }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-        DataFile dataFile = new DataFile();
-        mData = dataFile.Song();
 
         SongListAdapter songLisAdapter = new SongListAdapter(mData);
 

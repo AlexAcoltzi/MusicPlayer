@@ -17,19 +17,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#262830"
-            android:gravity="center"
             app:title="Music"
             app:titleCentered="true"
-            app:titleTextColor="@color/white">
-
+            app:titleTextColor="@color/white"
+            app:navigationIcon="@drawable/ic_atras_50">
 
         </com.google.android.material.appbar.MaterialToolbar>
 
+
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -66,6 +64,39 @@
             android:textSize="15sp"
             android:textColor="@color/white" />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                tools:text="2:30"
+                android:layout_marginLeft="20dp"
+                android:gravity="center" />
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="70dp"
+                android:backgroundTint="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/timeRest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:layout_marginLeft="350dp"
+                tools:text="1:20" />
+
+        </RelativeLayout>
+
         <LinearLayout
             android:layout_marginTop="50dp"
             android:layout_width="wrap_content"
@@ -74,43 +105,48 @@
 
             <ImageButton
                 android:id="@+id/ibtnShufle"
-                android:layout_marginStart="10dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/ic_shuffle_24"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="#262830"
+                android:src="@drawable/ic_shuffle_24" />
 
             <ImageButton
                 android:id="@+id/ibtnPrevius"
-                android:layout_marginStart="10dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="#262830"
                 android:rotationY="182"
-                android:src="@drawable/ic_next_24"
-                android:layout_gravity="center" />
+                android:src="@drawable/ic_next_24" />
 
             <ImageButton
                 android:id="@+id/ibtnRepControl"
-                android:layout_marginStart="10dp"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/ic_play_button_circled_50" />
+                android:layout_marginStart="10dp"
+                android:backgroundTint="#262830"
+                android:src="@drawable/ic_pause_button_50" />
 
             <ImageButton
                 android:id="@+id/ibtnNext"
-                android:layout_marginStart="10dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/ic_next_24"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="#262830"
+                android:src="@drawable/ic_next_24" />
 
             <ImageButton
                 android:id="@+id/ibtnRepeat"
-                android:layout_marginStart="10dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/ic_repetir_30"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="#262830"
+                android:src="@drawable/ic_repetir_30" />
 
         </LinearLayout>
     </LinearLayout>
