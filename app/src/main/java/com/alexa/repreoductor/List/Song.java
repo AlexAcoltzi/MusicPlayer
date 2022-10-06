@@ -16,6 +16,7 @@ public class Song implements Parcelable {
         this.tvTitle = tvTitle;
         this.tvSubTitle = tvSubTitle;
     }
+    public Song(){}
 
     public Song(Parcel parcel) {
         ivPortada = Uri.parse(parcel.readString());
