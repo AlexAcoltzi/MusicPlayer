@@ -1,12 +1,12 @@
 package com.alexa.repreoductor.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,6 +14,7 @@ import com.alexa.repreoductor.Adapters.SongListAdapter;
 import com.alexa.repreoductor.Data.DataFile;
 import com.alexa.repreoductor.List.Song;
 import com.alexa.repreoductor.R;
+import com.alexa.repreoductor.ReproductorActivity;
 
 import java.util.List;
 
@@ -37,8 +38,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void OnItemClick(int position) {
                 Song song = mData.get(position);
-                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-                transaction.replace(R.id.pager, new ReproduccionFragment(song));
+                startActivity(new Intent(getContext(), ReproductorActivity.class)
+                        .putExtra("Title", song.getTvTitle())
+                        .putExtra("Artist", song.getTvSubTitle())
+                        .putExtra("position", position)
+                );
             }
         });
 
