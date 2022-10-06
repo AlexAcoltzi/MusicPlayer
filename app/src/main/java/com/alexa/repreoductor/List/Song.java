@@ -1,11 +1,11 @@
 package com.alexa.repreoductor.List;
 
 import android.net.Uri;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Song {
+public class Song implements Parcelable {
+    private final Uri uri = null;
     private Uri ivPortada;
     private String tvTitle;
     private String tvSubTitle;
@@ -15,6 +15,12 @@ public class Song {
         this.ivPortada = ivPortada;
         this.tvTitle = tvTitle;
         this.tvSubTitle = tvSubTitle;
+    }
+
+    public Song(Parcel parcel) {
+        ivPortada = Uri.parse(parcel.readString());
+        tvTitle = parcel.readString();
+        tvSubTitle = parcel.readString();
     }
 
     public Uri getIvPortada() {
@@ -40,4 +46,30 @@ public class Song {
     public void setTvSubTitle(String tvSubTitle) {
         this.tvSubTitle = tvSubTitle;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(String.valueOf(ivPortada));
+        parcel.writeString(tvTitle);
+        parcel.writeString(tvSubTitle);
+    }
+
+    public static final Parcelable.Creator<Song> CREATOR = new Parcelable.Creator<Song>() {
+
+        @Override
+        public Song createFromParcel(Parcel parcel) {
+            return new Song(parcel);
+        }
+
+        @Override
+        public Song[] newArray(int i) {
+            return new Song[i];
+        }
+    };
+
 }

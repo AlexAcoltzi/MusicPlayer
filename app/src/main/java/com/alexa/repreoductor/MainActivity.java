@@ -10,7 +10,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.alexa.repreoductor.Adapters.AdapterFragment;
+import com.alexa.repreoductor.Data.DataFile;
+import com.alexa.repreoductor.List.Albums;
 import com.alexa.repreoductor.List.Playlist;
+import com.alexa.repreoductor.List.Song;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -21,7 +24,6 @@ import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSION_REQUEST = 1;
     ArrayList<String> arrayList = null;
     ListView listView;
-    List<Playlist> listPlaylist;
+    ArrayList<Playlist> listPlaylist;
+    ArrayList<Song> Songs;
+    ArrayList<Albums> Albums;
     private String[] items;
 
     @Override
@@ -45,7 +49,12 @@ public class MainActivity extends AppCompatActivity {
         //Accedemos con permisos a los archivos del telefono
         runtimePermission();
 
-        pager.setAdapter(new AdapterFragment(getSupportFragmentManager(), getLifecycle(), listPlaylist));
+        DataFile dataFile = new DataFile();
+        listPlaylist = dataFile.PlayList();
+        Songs = dataFile.Song();
+        Albums = dataFile.Albums();
+
+        pager.setAdapter(new AdapterFragment(getSupportFragmentManager(), getLifecycle(), listPlaylist, Songs, Albums));
 
         pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -105,27 +114,6 @@ public class MainActivity extends AppCompatActivity {
                 }
         ).check();
     }
-    /*public  void doStuff(){
-        getMusic();
-    }
-    public void getMusic(){
-        ContentResolver contentResolver = getContentResolver();
-        Uri songUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-        Cursor songCursor = contentResolver.query(songUri,null,null,null,null);
-        if(songCursor != null && songCursor.moveToFirst()){
-            int songTitle = songCursor.getColumnIndex(MediaStore.Audio.Media.TITLE);
-            int songArtist = songCursor.getColumnIndex(MediaStore.Audio.Media.ARTIST);
-
-
-            do{
-                String currentTitle = songCursor.getString(songTitle);
-                String currentArtist = songCursor.getString(songArtist);
-
-                //arrayList.add();
-                listPlaylist.add(new ListPlaylist(songUri,currentTitle+'\n'+currentArtist));
-            }while (songCursor.moveToNext());
-        }
-    }*/
 
     public ArrayList<File> findSong(File file){
         ArrayList<File> arrayList = new ArrayList<>();

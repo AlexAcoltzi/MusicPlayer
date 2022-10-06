@@ -5,6 +5,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +27,15 @@ public class PlaylistViewHolder extends RecyclerView.ViewHolder {
         this.imageView = itemView.findViewById(R.id.ivImagePlaylist);
         this.tvName = itemView.findViewById(R.id.tvPlaylistName);
         this.imageButton = itemView.findViewById(R.id.ibtnMorePlaylist);
+
+        LinearLayout linearLayout = itemView.findViewById(R.id.PlaylistItem);
+
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.ClickItem(getAdapterPosition());
+            }
+        });
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
