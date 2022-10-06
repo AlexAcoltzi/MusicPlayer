@@ -47,7 +47,7 @@ public class AlbumFragment extends Fragment {
                 Song songNew = new Song(Uri.EMPTY, "Hola", "Mundo");
                 songList.add(songNew);
                 Bundle bundle = new Bundle();
-                bundle.putString("Titulo", albums.getArtist());
+                bundle.putString("Titulo", albums.getTitle());
                 bundle.putParcelableArrayList("Songs", (ArrayList<? extends Parcelable>) songList);
                 startActivity(new Intent(getContext(), ListPlaylistView.class).putExtras(bundle));
             }

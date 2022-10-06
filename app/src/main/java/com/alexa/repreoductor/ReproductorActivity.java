@@ -23,6 +23,8 @@ public class ReproductorActivity extends AppCompatActivity {
 
         btnPlay = findViewById(R.id.ibtnRepControl);
 
+        String name = getIntent().getStringExtra("Title");
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,6 +45,8 @@ public class ReproductorActivity extends AppCompatActivity {
                 }
             }
         });
+
+        toolbar.setTitle(name);
 
     }
 }
