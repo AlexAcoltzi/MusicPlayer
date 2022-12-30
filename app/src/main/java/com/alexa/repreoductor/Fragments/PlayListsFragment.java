@@ -21,13 +21,14 @@ import com.alexa.repreoductor.ListPlaylistView;
 import com.alexa.repreoductor.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PlayListsFragment extends Fragment {
     private RecyclerView recyclerView;
-    private ArrayList<Playlist> list;
+    private List<Playlist> list;
     private Context context;
 
-    public PlayListsFragment(ArrayList<Playlist> arraySongs) {
+    public PlayListsFragment(List<Playlist> arraySongs) {
         list = arraySongs;
         /*convertirDatosCancion(arraySongs);*/
     }

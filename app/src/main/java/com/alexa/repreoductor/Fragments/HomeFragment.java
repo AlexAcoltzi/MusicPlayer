@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,13 +47,10 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     RecyclerView recyclerView;
-    private ArrayList<Song> mData;
-
-    public HomeFragment(ArrayList<Song> songs) {
-        this.mData = songs;
-    }
 
     private List<Song> mData;
+    private ArrayList<String> listPaths;
+    private ArrayList<String> listTitle;
     private Context context =getActivity();
 
     public HomeFragment(List<Song> tempAudioList) {
@@ -68,11 +66,17 @@ public class HomeFragment extends Fragment {
         songLisAdapter.setOnItemClicked(new SongListAdapter.OnItemClicked() {
             @Override
             public void OnItemClick(int position) {
-                Song song = mData.get(position);
-                startActivity(new Intent(getContext(), ReproductorActivity.class)
-                        .putExtra("Title", song.getTvTitle())
-                        .putExtra("Artist", song.getTvSubTitle())
-                        .putExtra("position", position)
+                List<Song> anyObjectList;
+                Bundle bundle = new Bundle();
+                anyObjectList = mData;
+                bundle.putParcelableArrayList("music_list", (ArrayList<? extends Parcelable>) anyObjectList);
+                //Song song = mData.get(position);
+                startActivity(new Intent(getContext(), ReproductorActivity.class).putExtra("music_list2", bundle)
+                      //  .putExtra("Title", song.getTvTitle())
+                      //  .putExtra("Artist", song.getTvSubTitle())
+                        //.putExtra("position", song.getPath())
+
+
                 );
             }
         });

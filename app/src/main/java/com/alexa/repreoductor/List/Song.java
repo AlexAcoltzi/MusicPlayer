@@ -9,6 +9,17 @@ public class Song implements Parcelable {
     private Uri ivPortada;
     private String tvTitle;
     private String tvSubTitle;
+    private String path;
+
+    public String getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(String album) {
+        this.album = album;
+    }
+
+    private String album;
 
 
     public Song(Uri img, String tvTitle, String tvSubTitle) {
@@ -51,6 +62,13 @@ public class Song implements Parcelable {
     @Override
     public int describeContents() {
         return 0;
+    }
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     @Override

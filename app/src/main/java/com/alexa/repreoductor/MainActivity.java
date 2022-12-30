@@ -1,6 +1,7 @@
 package com.alexa.repreoductor;
 
 import android.Manifest;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 import androidx.annotation.NonNull;
@@ -30,6 +31,7 @@ import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -61,6 +63,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -70,10 +74,12 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<Playlist> listPlaylist;
     ArrayList<Song> Songs;
-    ArrayList<Albums> Albums;
+    List<Albums> Albums;
     final List<Song> tempAudioList = new ArrayList<>();
     private String[] items;
+    private ArraySet<HashMap<String, String>> albumList;
     //private static final String TAG = "MyActivity";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,10 +99,13 @@ public class MainActivity extends AppCompatActivity {
         Songs = dataFile.Song();
         Albums = dataFile.Albums();
 
-        pager.setAdapter(new AdapterFragment(getSupportFragmentManager(), getLifecycle(), listPlaylist, Songs, Albums));
+
+
         requestPermissions();
+        pager.setAdapter(new AdapterFragment(getSupportFragmentManager(), getLifecycle(), listPlaylist, tempAudioList, Albums));
+
         //Agregamos el array con las canciones
-        pager.setAdapter(new AdapterFragment(getSupportFragmentManager(), getLifecycle(), tempAudioList));
+
 
         pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -144,7 +153,9 @@ public class MainActivity extends AppCompatActivity {
                 .withPermissions(
                         // below is the list of permissions
                         Manifest.permission.READ_CONTACTS,
-                        Manifest.permission.READ_EXTERNAL_STORAGE)
+                        Manifest.permission.READ_EXTERNAL_STORAGE
+
+                        )
                 // after adding permissions we are calling an with listener method.
                 .withListener(new MultiplePermissionsListener() {
                     @Override
@@ -208,7 +219,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-        String[] projection = {MediaStore.Audio.AudioColumns.DATA, MediaStore.Audio.AudioColumns.TITLE, MediaStore.Audio.AudioColumns.ALBUM, MediaStore.Audio.ArtistColumns.ARTIST,};
+        String[] projection = {
+                MediaStore.Audio.AudioColumns.DATA,
+                MediaStore.Audio.AudioColumns.TITLE,
+                MediaStore.Audio.AudioColumns.ALBUM,
+                MediaStore.Audio.ArtistColumns.ARTIST,};
+
         Cursor c = context.getContentResolver().query(uri,
                 projection,
                 null,
@@ -228,6 +244,8 @@ public class MainActivity extends AppCompatActivity {
                 // Set data to the model object.
                 audioModel.setTvTitle(name);
                 audioModel.setTvSubTitle(artist);
+                audioModel.setPath(path);
+                audioModel.setAlbum(album);
 
                 Log.e("Name :" + name, " Album :" + album);
                 Log.e("Path :" + path, " Artist :" + artist);
@@ -237,5 +255,16 @@ public class MainActivity extends AppCompatActivity {
             }
             c.close();
         }
+    }
+
+    public List<Song> getAlbums(){
+
+        List<Song> Album = new ArrayList<>();
+        for (Song song:tempAudioList) {
+          if(song.getAlbum()=="Off The Wall"){
+              Album.add(song);
+          }
+        }
+        return Album;
     }
 }

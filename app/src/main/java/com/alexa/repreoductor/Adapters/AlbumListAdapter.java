@@ -12,9 +12,10 @@ import com.alexa.repreoductor.R;
 import com.alexa.repreoductor.ViewHolder.AlbumListViewHolder;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AlbumListAdapter extends RecyclerView.Adapter<AlbumListViewHolder> {
-    private final ArrayList<Albums> mData;
+    private final List<Albums> mData;
     private final LayoutInflater liView;
     private final Context context;
     private setItemClickedLister setItemClickedLister;
@@ -28,7 +29,7 @@ public class AlbumListAdapter extends RecyclerView.Adapter<AlbumListViewHolder> 
     }
 
 
-    public AlbumListAdapter(ArrayList<Albums> mData, Context context) {
+    public AlbumListAdapter(List<Albums> mData, Context context) {
         this.mData = mData;
         this.liView = LayoutInflater.from(context);
         this.context = context;

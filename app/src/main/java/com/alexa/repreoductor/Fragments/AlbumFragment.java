@@ -21,15 +21,18 @@ import com.alexa.repreoductor.ListPlaylistView;
 import com.alexa.repreoductor.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AlbumFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private ArrayList<Albums> mData;
+    private List<Albums> mData;
+    private List<Song> songs;
     private Context context;
 
-    public AlbumFragment(ArrayList<Albums> albums) {
-        this.mData = albums;
+    public AlbumFragment(List<Albums> albums, List<Song> tempAudioList) {
+       this.mData = albums;
+       songs = tempAudioList;
     }
 
     @Override
@@ -44,11 +47,20 @@ public class AlbumFragment extends Fragment {
             public void changeView(int position) {
                 Albums albums = mData.get(position);
                 ArrayList<Song> songList = new DataFile().Song();
-                Song songNew = new Song(Uri.EMPTY, "Hola", "Mundo");
-                songList.add(songNew);
+                /*ArrayList<Song> songList = new ArrayList<>();
+                for (Song song: songs) {
+                    if(song.getAlbum() == "Off The Wall"){
+                        songList.add(song);
+                    }
+                }*/
+
                 Bundle bundle = new Bundle();
-                bundle.putString("Titulo", albums.getTitle());
-                bundle.putParcelableArrayList("Songs", (ArrayList<? extends Parcelable>) songList);
+                //bundle.putString("Titulo", albums.getTitle());
+                //bundle.putParcelableArrayList("Songs", (ArrayList<? extends Parcelable>) songList);
+                ArrayList<Song> anyObjectList = new ArrayList<>();
+                anyObjectList = songList;
+                bundle.putParcelableArrayList("music_list", anyObjectList);
+                //intent.putExtra("KEY_BUNDLE_VALUE", bundle);
                 startActivity(new Intent(getContext(), ListPlaylistView.class).putExtras(bundle));
             }
         });

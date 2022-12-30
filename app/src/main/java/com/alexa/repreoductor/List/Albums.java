@@ -2,7 +2,9 @@ package com.alexa.repreoductor.List;
 
 import android.net.Uri;
 
-public class Albums {
+import java.io.Serializable;
+
+public class Albums implements Serializable {
     private Uri img;
     private String title;
     private String artist;
